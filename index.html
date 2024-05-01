@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About me - tienanh109</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+@font-face {
+    font-family: 'SourceCodePro-VariableFont_wght';
+    src: url('./SourceCodePro-VariableFont_wght.ttf') format('truetype');
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'SourceCodePro-VariableFont_wght', monospace;
+}
+
+body {
+    font-family: 'SourceCodePro-VariableFont_wght', monospace;
+}
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #1f1f1f;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+header img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex; /* Thêm dòng này để căn chỉnh icon và văn bản */
+    align-items: center; /* Thêm dòng này để căn chỉnh icon và văn bản */
+}
+
+nav ul li a .fab { /* Định dạng icon */
+    margin-right: 5px; /* Khoảng cách giữa icon và văn bản */
+}
+
+nav ul li a:hover {
+    color: #00b0f0;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+footer {
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+}
+/* Thêm animation cho chữ */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+header h1 span {
+    display: inline-block;
+    opacity: 0;
+    animation: slideIn 1s ease forwards;
+}
+
+.fade {
+    opacity: 1 !important;
+}   
+/* Thêm style cho nút hiện đại */
+.social-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #00b0f0;
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+.social-btn.github {
+    background-color: #24292e; /* Màu GitHub */
+}
+
+.social-btn.youtube {
+    background-color: #ff0000; /* Màu YouTube */
+}
+
+.social-btn.discord {
+    background-color: #7289da; /* Màu Discord */
+}
+
+.social-btn:hover {
+    transform: scale(1.1);
+}
+ </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://avatars.githubusercontent.com/u/99895433?s=96&v=4" alt="Profile Picture">
+            <h1>Welcome&nbsp;to&nbsp;my&nbsp;profile!</h1> <!-- Đã thêm dấu cách giữa các từ -->
+            <p>Hello, I am tienanh109! </p>
+        </header>
+<nav>
+    <ul>
+        <li><a href="https://github.com/tienanh109" class="social-btn github"><i class="fab fa-github"></i>GitHub</a></li> <!-- Thêm icon mạng xã hội -->
+        <li><a href="https://www.youtube.com/@tienanh_90" class="social-btn youtube"><i class="fab fa-youtube"></i>YouTube</a></li> <!-- Thêm icon mạng xã hội -->
+        <li><a onclick="copyText()" class="social-btn discord"><i class="fab fa-discord"></i>Discord</a></li> <!-- Thêm icon mạng xã hội -->
+    </ul>
+</nav>
+        <section>
+            <h2>About me:</h2>
+            <p>Yeah, I'm just a Developer :v ! <br> What brought you here?</p>
+        </section>
+ <br>
+<iframe src="https://discord.com/widget?id=1205813697361215568&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  <br>
+        <footer>
+            <p>Contact: bzot9ws@gmail.com</p>
+        </footer>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const text = document.querySelector('h1');
+    const strText = text.textContent;
+    const splitText = strText.split("");
+
+    text.textContent = "";
+
+    for (let i = 0; i < splitText.length; i++) {
+        text.innerHTML += "<span>" + splitText[i] + "</span>";
+    }
+
+    let char = 0;
+    let timer = setInterval(onTick, 50);
+
+    function onTick() {
+        const span = text.querySelectorAll('span')[char];
+        span.classList.add('fade');
+        char++;
+        if (char === splitText.length) {
+            complete();
+            return;
+        }
+    }
+
+    function complete() {
+        clearInterval(timer);
+        timer = null;
+    }
+});
+function copyText() {
+  var textToCopy = "tienanh109";
+
+  /* Tạo một phần tử input tạm thời */
+  var tempInput = document.createElement("input");
+  
+  /* Gán văn bản cần sao chép vào giá trị của phần tử input */
+  tempInput.value = textToCopy;
+  
+  /* Thêm phần tử input vào DOM */
+  document.body.appendChild(tempInput);
+  
+  /* Chọn văn bản trong phần tử input */
+  tempInput.select();
+  
+  /* Sao chép văn bản vào clipboard */
+  document.execCommand("copy");
+  
+  /* Xóa phần tử input tạm thời khỏi DOM */
+  document.body.removeChild(tempInput);
+  
+  /* Thông báo sau khi sao chép thành công */
+  alert("Copied my discord username!!");
+}
+    </script>
+</body>
+</html>
