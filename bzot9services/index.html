@@ -60,7 +60,7 @@
             background-color: #ddd;
         }
 
-        #playButton {
+        #playButton, #infoButton {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -71,14 +71,14 @@
             transition: background-color 0.3s;
         }
 
-        #playButton:hover {
+        #playButton:hover, #infoButton:hover {
             background-color: #21a1f1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1><b>Tic Tac Toe <br> BZOT9 Apps</b>b></b></h1>
+        <h1><b class="hidden">BZOT9 Apps</b>Tic Tac Toe</h1>
         <p id="turnText">It's X's Turn (You)</p>
         <div class="game">
             <div class="board" id="board">
@@ -94,12 +94,14 @@
             </div>
         </div>
         <button id="playButton">Play Again</button>
+        <button id="infoButton">Info</button>
     </div>
     <script>
         const board = document.getElementById('board');
         const cells = document.querySelectorAll('[data-cell]');
         const playButton = document.getElementById('playButton');
         const turnText = document.getElementById('turnText');
+        const infoButton = document.getElementById('infoButton');
         const X_CLASS = 'x';
         const O_CLASS = 'o';
         let oTurn;
@@ -118,6 +120,7 @@
         startGame();
 
         playButton.addEventListener('click', startGame);
+        infoButton.addEventListener('click', showInfo);
 
         function startGame() {
             oTurn = false;
@@ -191,7 +194,6 @@
         }
 
         function computerMove() {
-            sleep (2);
             const availableCells = [...cells].filter(cell => !cell.classList.contains(X_CLASS) && !cell.classList.contains(O_CLASS));
             if (availableCells.length === 0) return;
             const randomCell = availableCells[Math.floor(Math.random() * availableCells.length)];
@@ -204,6 +206,10 @@
                 swapTurns();
                 setBoardHoverClass();
             }
+        }
+
+        function showInfo() {
+            alert("Made by tienanh109\nVersion: 1.0\nDiscord: @tienanh109");
         }
     </script>
 </body>
