@@ -60,7 +60,7 @@
             background-color: #ddd;
         }
 
-        #playButton, #infoButton {
+        #playButton {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -71,15 +71,15 @@
             transition: background-color 0.3s;
         }
 
-        #playButton:hover, #infoButton:hover {
+        #playButton:hover {
             background-color: #21a1f1;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1><b class="hidden">BZOT9 Apps</b>Tic Tac Toe</h1>
-        <p id="turnText">It's X's Turn (You)</p>
+        <h1>Tic Tac Toe - BZOT9 Apps</h1>
+        <p id="turnText">It's X's Turn</p>
         <div class="game">
             <div class="board" id="board">
                 <div class="cell" data-cell></div>
@@ -94,14 +94,12 @@
             </div>
         </div>
         <button id="playButton">Play Again</button>
-        <button id="infoButton">Info</button>
     </div>
     <script>
         const board = document.getElementById('board');
         const cells = document.querySelectorAll('[data-cell]');
         const playButton = document.getElementById('playButton');
         const turnText = document.getElementById('turnText');
-        const infoButton = document.getElementById('infoButton');
         const X_CLASS = 'x';
         const O_CLASS = 'o';
         let oTurn;
@@ -120,11 +118,10 @@
         startGame();
 
         playButton.addEventListener('click', startGame);
-        infoButton.addEventListener('click', showInfo);
 
         function startGame() {
             oTurn = false;
-            turnText.innerText = "It's X's Turn (You)";
+            turnText.innerText = "It's X's Turn";
             cells.forEach(cell => {
                 cell.classList.remove(X_CLASS);
                 cell.classList.remove(O_CLASS);
@@ -155,7 +152,7 @@
             if (draw) {
                 alert("Draw!");
             } else {
-                alert(`${oTurn ? "O's (Bot)" : "X's (You)"} Wins!`);
+                alert(`${oTurn ? "O's" : "X's"} Wins!`);
             }
             startGame();
         }
@@ -172,7 +169,7 @@
 
         function swapTurns() {
             oTurn = !oTurn;
-            turnText.innerText = oTurn ? "It's O's Turn (Bot)" : "It's X's Turn (You)";
+            turnText.innerText = oTurn ? "It's O's Turn" : "It's X's Turn";
         }
 
         function setBoardHoverClass() {
@@ -206,10 +203,6 @@
                 swapTurns();
                 setBoardHoverClass();
             }
-        }
-
-        function showInfo() {
-            alert("Made by tienanh109\nVersion: 1.0\nDiscord: @tienanh109");
         }
     </script>
 </body>
