@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <title>Tic Tac Toe - BZOT9 Apps</title>
     <style>
         body {
             display: flex;
@@ -46,11 +46,13 @@
             transition: background-color 0.3s;
         }
 
-        .cell.x {
+        .cell.x::after {
+            content: 'X';
             color: #ff6347;
         }
 
-        .cell.o {
+        .cell.o::after {
+            content: 'O';
             color: #4682b4;
         }
 
@@ -76,6 +78,8 @@
 </head>
 <body>
     <div class="container">
+        <h1>Tic Tac Toe - BZOT9 Apps</h1>
+        <p id="turnText">It's X's Turn</p>
         <div class="game">
             <div class="board" id="board">
                 <div class="cell" data-cell></div>
@@ -95,6 +99,7 @@
         const board = document.getElementById('board');
         const cells = document.querySelectorAll('[data-cell]');
         const playButton = document.getElementById('playButton');
+        const turnText = document.getElementById('turnText');
         const X_CLASS = 'x';
         const O_CLASS = 'o';
         let oTurn;
@@ -116,6 +121,7 @@
 
         function startGame() {
             oTurn = false;
+            turnText.innerText = "It's X's Turn";
             cells.forEach(cell => {
                 cell.classList.remove(X_CLASS);
                 cell.classList.remove(O_CLASS);
@@ -163,6 +169,7 @@
 
         function swapTurns() {
             oTurn = !oTurn;
+            turnText.innerText = oTurn ? "It's O's Turn" : "It's X's Turn";
         }
 
         function setBoardHoverClass() {
