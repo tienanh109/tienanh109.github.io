@@ -150,9 +150,9 @@
 
         function endGame(draw) {
             if (draw) {
-                alert("Draw!");
+                turnText.innerText("Draw!");
             } else {
-                alert(`${oTurn ? "O's" : "X's"} Wins!`);
+                turnText.innerText(`${oTurn ? "O's" : "X's"} Wins!`);
             }
             startGame();
         }
