@@ -103,6 +103,7 @@
         const X_CLASS = 'x';
         const O_CLASS = 'o';
         let oTurn;
+        let isMoving = false; // Biến kiểm tra xem có đang trong quá trình di chuyển hay không
 
         const WINNING_COMBINATIONS = [
             [0, 1, 2],
@@ -133,6 +134,7 @@
 
         function handleClick(e) {
             const cell = e.target;
+            if (isMoving || cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)) return; // Kiểm tra xem có đang trong quá trình di chuyển hoặc ô đã được đánh dấu chưa
             const currentClass = oTurn ? O_CLASS : X_CLASS;
             placeMark(cell, currentClass);
             if (checkWin(currentClass)) {
@@ -143,6 +145,7 @@
                 swapTurns();
                 setBoardHoverClass();
                 if (oTurn) {
+                    isMoving = true; // Đánh dấu đang trong quá trình di chuyển
                     setTimeout(computerMove, 500);
                 }
             }
@@ -202,7 +205,8 @@
                 swapTurns();
                 setBoardHoverClass();
             }
-        }
+            isMoving = false;
+            }
     </script>
 </body>
 </html>
