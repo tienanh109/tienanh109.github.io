@@ -15,17 +15,8 @@
         }, {});
 
         if (result.access_token) {
-            fetch('https://discord.com/api/users/@me', {
-                headers: {
-                    'Authorization': `Bearer ${result.access_token}`
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                localStorage.setItem('discord_user', JSON.stringify(data));
-                window.location.href = '/bzot9services/';
-            })
-            .catch(console.error);
+            localStorage.setItem('access_token', result.access_token);
+            window.location.href = '/bzot9services/';
         } else {
             window.location.href = '/bzot9services/';
         }
