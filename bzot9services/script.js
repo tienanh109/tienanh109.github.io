@@ -1,5 +1,5 @@
 const CLIENT_ID = '919521292590399530';
-const REDIRECT_URI = 'https://localhost:8080/api/callback.html';
+const REDIRECT_URI = 'https://tienanh109.dev/bzot9services/api/callback.html';
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('loginBtn');
