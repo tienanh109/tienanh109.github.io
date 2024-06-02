@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BZOT9 Services - Discord Callback</title>
+    <title>BZOT9 Services Callback</title>
 </head>
 <body>
     <script>
@@ -15,10 +15,19 @@
         }, {});
 
         if (result.access_token) {
-            localStorage.setItem('access_token', result.access_token);
-            window.location.href = '/bzot9services/';
+            fetch('https://discord.com/api/users/@me', {
+                headers: {
+                    'Authorization': `Bearer ${result.access_token}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem('discord_user', JSON.stringify(data));
+                window.location.href = '/';
+            })
+            .catch(console.error);
         } else {
-            window.location.href = '/bzot9services/';
+            window.location.href = '/';
         }
     </script>
 </body>
