@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Callback</title>
+    <title>BZOT9 Services - Discord Callback</title>
 </head>
 <body>
     <script>
@@ -23,11 +23,11 @@
             .then(response => response.json())
             .then(data => {
                 localStorage.setItem('discord_user', JSON.stringify(data));
-                window.location.href = '/bzot9services/main.html';
+                window.location.href = '/bzot9services/';
             })
             .catch(console.error);
         } else {
-            window.location.href = '/bzot9services/main.html';
+            window.location.href = '/bzot9services/';
         }
     </script>
 </body>
