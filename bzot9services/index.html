@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BZOT9 Services Login</title>
+    <title>Discord Bot and Server Info</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="content">
-        <h1>Welcome to BZOT9 Bot</h1>
+        <h1>Welcome to Discord Bot and Server Info</h1>
         <button id="loginBtn">Login with Discord</button>
+        <button id="inviteBtn" class="hidden">Invite Bot</button>
         <div id="user-info" class="hidden">
             <img id="avatar" src="" alt="Avatar">
             <h2 id="username"></h2>
             <p id="user-id"></p>
             <button id="logoutBtn">Logout</button>
+        </div>
+        <div id="server-info" class="hidden">
+            <h2>Your Servers</h2>
+            <div id="server-list"></div>
         </div>
     </div>
     <script src="script.js"></script>
