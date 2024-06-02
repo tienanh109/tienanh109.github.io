@@ -13,7 +13,7 @@ body {
     text-align: center;
 }
 
-#loginBtn, #logoutBtn {
+#loginBtn, #logoutBtn, #inviteBtn {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -23,7 +23,7 @@ body {
     margin-top: 20px;
 }
 
-#loginBtn:hover, #logoutBtn:hover {
+#loginBtn:hover, #logoutBtn:hover, #inviteBtn:hover {
     background: #4752c4;
 }
 
@@ -34,4 +34,25 @@ body {
 #avatar {
     border-radius: 50%;
     margin-top: 20px;
+}
+
+#server-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.server-card {
+    background: #2c2f33;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    text-align: left;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.server-card img {
+    width: 100%;
+    border-radius: 5px;
 }
