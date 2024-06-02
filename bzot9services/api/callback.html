@@ -23,11 +23,11 @@
             .then(response => response.json())
             .then(data => {
                 localStorage.setItem('discord_user', JSON.stringify(data));
-                window.location.href = '/';
+                window.location.href = '/bzot9services/main.html';
             })
             .catch(console.error);
         } else {
-            window.location.href = '/';
+            window.location.href = '/bzot9services/main.html';
         }
     </script>
 </body>
