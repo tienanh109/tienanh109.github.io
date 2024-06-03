@@ -85,7 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(response => response.json())
                 .then(servers => {
-                    displayServerInfo(servers);
+                    const botServers = servers.filter(server => server.permissions & 0x00000008);
+                    displayServerInfo(botServers);
                 });
             })
             .catch(console.error);
@@ -101,7 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(response => response.json())
                 .then(servers => {
-                    displayServerInfo(servers);
+                    const botServers = servers.filter(server => server.permissions & 0x00000008);
+                    displayServerInfo(botServers);
                 });
             }
         }
