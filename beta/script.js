@@ -1,78 +1,60 @@
-const CLIENT_ID = '919521292590399530';  // Thay thế bằng Client ID của bạn
-const REDIRECT_URI = 'https://tienanh109.dev/beta/callback.html';
-const API_BASE_URL = 'https://discord.com/api';
+document.addEventListener("DOMContentLoaded", function() {
+    const loginButton = document.getElementById("login-button");
+    const logoutButton = document.getElementById("logout-button");
+    const loginScreen = document.getElementById("login-screen");
+    const dashboard = document.getElementById("dashboard");
+    const userNameElement = document.getElementById("user-name");
+    const userAvatarElement = document.getElementById("user-avatar");
+    const serverListElement = document.getElementById("server-list");
 
-document.getElementById('login-button').addEventListener('click', login);
-document.getElementById('logout-button').addEventListener('click', logout);
+    const CLIENT_ID = "919521292590399530";
+    const REDIRECT_URI = "https://tienanh109.dev/beta/callback.html";
+    const RESPONSE_TYPE = "token";
+    const SCOPES = "identify guilds";
 
-function login() {
-    const authUrl = `${API_BASE_URL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify%20guilds`;
-    window.location.href = authUrl;
-}
+    const authEndpoint = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPES}`;
 
-function logout() {
-    localStorage.removeItem('discord_token');
-    localStorage.removeItem('user');
-    updateUI();
-}
+    loginButton.addEventListener("click", () => {
+        window.location.href = authEndpoint;
+    });
 
-function updateUI() {
-    const user = JSON.parse(localStorage.getItem('user'));
+    logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("token");
+        displayLoginScreen();
+    });
 
-    if (user) {
-        document.getElementById('login-screen').classList.add('hidden');
-        document.getElementById('dashboard').classList.remove('hidden');
-        document.getElementById('user-name').textContent = user.username;
-        document.getElementById('user-avatar').src = user.avatar;
-
-        const serverList = document.getElementById('server-list');
-        serverList.innerHTML = '';
-        user.servers.forEach(server => {
-            const li = document.createElement('li');
-            li.textContent = server;
-            serverList.appendChild(li);
-        });
-    } else {
-        document.getElementById('login-screen').classList.remove('hidden');
-        document.getElementById('dashboard').classList.add('hidden');
+    function displayLoginScreen() {
+        loginScreen.classList.remove("hidden");
+        dashboard.classList.add("hidden");
     }
-}
 
-function fetchUserDetails(token) {
-    return fetch(`${API_BASE_URL}/users/@me`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => response.json());
-}
+    function displayDashboard() {
+        loginScreen.classList.add("hidden");
+        dashboard.classList.remove("hidden");
+    }
 
-function fetchUserGuilds(token) {
-    return fetch(`${API_BASE_URL}/users/@me/guilds`, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => response.json());
-}
-
-function handleCallback() {
-    const token = localStorage.getItem('discord_token');
-
-    if (token) {
-        Promise.all([fetchUserDetails(token), fetchUserGuilds(token)])
-            .then(([userDetails, userGuilds]) => {
-                const user = {
-                    username: userDetails.username,
-                    avatar: `https://cdn.discordapp.com/avatars/${userDetails.id}/${userDetails.avatar}.png`,
-                    servers: userGuilds.map(guild => guild.name)
-                };
-
-                localStorage.setItem('user', JSON.stringify(user));
-                updateUI();
+    function getUserData() {
+        const token = localStorage.getItem("token");
+        if (token) {
+            fetch("https://discord.com/api/users/@me", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             })
-            .catch(err => console.error('Failed to fetch user data:', err));
+            .then(response => response.json())
+            .then(data => {
+                userNameElement.textContent = data.username;
+                userAvatarElement.src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+                displayDashboard();
+            })
+            .catch(error => {
+                console.error("Error fetching user data:", error);
+                displayLoginScreen();
+            });
+        } else {
+            displayLoginScreen();
+        }
     }
-}
 
-// Chạy khi trang được tải
-updateUI();
-handleCallback();
+    getUserData();
+});
