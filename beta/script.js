@@ -1,5 +1,5 @@
 const CLIENT_ID = '919521292590399530';  // Thay thế bằng Client ID của bạn
-const REDIRECT_URI = 'http://localhost:5500/callback.html';
+const REDIRECT_URI = 'https://tienanh109.dev/beta/callback.html';
 const API_BASE_URL = 'https://discord.com/api';
 
 document.getElementById('login-button').addEventListener('click', login);
