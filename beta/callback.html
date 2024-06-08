@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord OAuth2 Callback</title>
+</head>
+<body>
+    <script>
+        // Lấy token truy cập từ URL và lưu vào localStorage
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        const token = params.get('access_token');
+
+        if (token) {
+            localStorage.setItem('discord_token', token);
+        }
+
+        // Chuyển hướng người dùng về trang chính
+        window.location.href = "index.html";
+    </script>
+</body>
+</html>
