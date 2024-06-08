@@ -18,6 +18,7 @@
     <!-- Dashboard -->
     <div id="dashboard" class="screen hidden">
         <nav class="navbar">
+            <div class="brand">BZOT9 Bot</div>
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Support</a></li>
@@ -27,22 +28,23 @@
                 <img id="user-avatar" src="" alt="User Avatar">
                 <span id="user-name"></span>
                 <button id="logout-button">Logout</button>
+                <div class="toggle-menu"><span>&#9776;</span></div>
             </div>
         </nav>
-        
-        <div class="content">
-            <div class="card">
-                <h2>All Servers I Join</h2>
-                <ul id="server-list"></ul>
-                <button>Want more? Invite me here</button>
-            </div>
 
-            <div class="card">
+        <div class="content">
+            <div class="card status-card">
                 <h2>Bot Status</h2>
                 <p>Name: BZOT9 Bot</p>
                 <p>Ping: 100-200ms</p>
                 <p>Health: <span class="status-good">Good</span></p>
                 <p>Note: nothing</p>
+            </div>
+
+            <div class="card">
+                <h2>All Servers I Join</h2>
+                <ul id="server-list"></ul>
+                <button>Want more? Invite me here</button>
             </div>
 
             <div class="card">
@@ -73,12 +75,12 @@
     </div>
 
     <footer>
-        <img href=https://cdn.discordapp.com/avatars/919521292590399530/b7c3f13d50d360842c95898ce3f3a16e.png"" alt="Bot Logo">
-        <p>Name Bot</p>
+        <img src="https://cdn.discordapp.com/avatars/919521292590399530/b7c3f13d50d360842c95898ce3f3a16e.png" alt="Bot Logo">
+        <p>BZOT9 Bot</p>
         <p>
-            <a href="#">Homepage</a> | 
-            <a href="mailto:email@example.com">Email</a> | 
-            <a href="#">Discord</a> | 
+            <a href="#">Homepage</a> |
+            <a href="mailto:your-email@example.com">Email</a> |
+            <a href="#">Discord</a> |
             <a href="#">About</a>
         </p>
     </footer>
