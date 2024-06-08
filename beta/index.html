@@ -10,78 +10,78 @@
     <!-- Login Screen -->
     <div id="login-screen" class="screen">
         <div class="container">
-            <h1>Welcome to BZOT9 Bot</h1>
+            <h1>Welcome to Discord Bot Dashboard</h1>
             <button id="login-button">Login with Discord</button>
         </div>
     </div>
 
-    <!-- Main Dashboard -->
+    <!-- Dashboard -->
     <div id="dashboard" class="screen hidden">
-        <nav>
-            <div class="nav-left">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Support</a>
-                <a href="#" class="nav-link">About</a>
-            </div>
-            <div class="nav-right">
-                <img id="user-avatar" class="avatar" src="" alt="User Avatar">
-                <span id="user-name">Username</span>
-                <button id="logout-button">Logout</button>
-            </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">About</a></li>
+                <li class="profile">
+                    <img id="user-avatar" src="" alt="User Avatar">
+                    <span id="user-name"></span>
+                    <button id="logout-button">Logout</button>
+                </li>
+            </ul>
         </nav>
-
+        
         <div class="content">
-            <div class="profile">
-                <h2>Name Profile</h2>
-            </div>
-            <div class="servers">
+            <div class="card">
                 <h2>All Servers I Join</h2>
-                <ul id="server-list">
-                    <!-- Server list items will be appended here by JavaScript -->
-                </ul>
-                <button id="invite-button">Want more? Invite me here</button>
+                <ul id="server-list"></ul>
+                <button>Want more? Invite me here</button>
             </div>
-            <div class="bot-status">
+
+            <div class="card">
                 <h2>Bot Status</h2>
                 <p>Name: BZOT9 Bot</p>
                 <p>Ping: 100-200ms</p>
-                <p>Health: <span class="good-health">Good</span></p>
-                <p>Note: Nothing</p>
+                <p>Health: <span class="status-good">Good</span></p>
+                <p>Note: nothing</p>
             </div>
-            <div class="how-to-use">
-                <h2>How to use bot?</h2>
+
+            <div class="card">
+                <h2>How to Use the Bot</h2>
                 <ul>
                     <li>...</li>
                     <li>...</li>
                 </ul>
             </div>
-            <div class="privacy-policy">
+
+            <div class="card">
                 <h2>Privacy Policy</h2>
                 <p>...</p>
             </div>
-            <div class="support">
+
+            <div class="card">
                 <h2>Support</h2>
                 <form>
-                    <!-- Support form elements here -->
+                    <!-- Form fields -->
                 </form>
             </div>
-            <div class="about">
+
+            <div class="card">
                 <h2>About</h2>
                 <p>...</p>
             </div>
         </div>
-
-        <footer>
-            <img src="bot-logo.png" alt="Bot Logo">
-            <span>BZOT9 Bot</span>
-            <nav>
-                <a href="#">Homepage</a>
-                <a href="mailto:email@example.com">Email</a>
-                <a href="#">Discord</a>
-                <a href="#">About</a>
-            </nav>
-        </footer>
     </div>
+
+    <footer>
+        <img src="bot-logo.png" alt="Bot Logo">
+        <p>Name Bot</p>
+        <p>
+            <a href="#">Homepage</a> | 
+            <a href="mailto:email@example.com">Email</a> | 
+            <a href="#">Discord</a> | 
+            <a href="#">About</a>
+        </p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
