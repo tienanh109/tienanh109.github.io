@@ -1,7 +1,22 @@
 #!/bin/bash
 
+# Tạo thư mục ~/bin nếu chưa tồn tại
+mkdir -p ~/bin
+
+# Thêm ~/bin vào biến môi trường PATH nếu chưa có
+if ! grep -q 'export PATH="$HOME/bin:$PATH"' ~/.bashrc; then
+  echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+fi
+
+# Nạp lại tệp ~/.bashrc để cập nhật PATH
+source ~/.bashrc
+
+# Tạo file ~/bin/cg.sh và thêm nội dung script vào
+cat << 'EOF' > ~/bin/cg.sh
+#!/bin/bash
+
 # Tạo lệnh cg
-function cg() {
+cg() {
   if [ "$1" == "help" ]; then
     echo "Available commands:"
     echo "  cg <cmd>      - Execute a command"
@@ -20,7 +35,21 @@ function cg() {
   fi
 }
 
-# Tạo alias cho các lệnh cg
-alias cg=cg
+# Export hàm cg để có thể dùng như lệnh
+export -f cg
 
-echo "Setup completed. Use 'cg help' for a list of commands."
+echo "Done! Setup completed. Use 'cg help' for a list of commands."
+EOF
+
+# Thiết lập file ~/bin/cg.sh để có thể thực thi
+chmod +x ~/bin/cg.sh
+
+# Tạo alias cho lệnh cg nếu chưa có
+if ! grep -q 'alias cg="source ~/bin/cg.sh"' ~/.bashrc; then
+  echo 'alias cg="source ~/bin/cg.sh"' >> ~/.bashrc
+fi
+
+# Nạp lại tệp ~/.bashrc để cập nhật alias
+source ~/.bashrc
+
+echo "Done! Setup completed. Use 'cg help' for a list of commands."
