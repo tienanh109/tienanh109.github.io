@@ -3,53 +3,45 @@
 # Tạo thư mục ~/bin nếu chưa tồn tại
 mkdir -p ~/bin
 
-# Thêm ~/bin vào biến môi trường PATH nếu chưa có
-if ! grep -q 'export PATH="$HOME/bin:$PATH"' ~/.bashrc; then
-  echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+# Thêm ~/bin vào PATH nếu chưa có
+if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
+    echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+    source ~/.bashrc
 fi
-
-# Nạp lại tệp ~/.bashrc để cập nhật PATH
-source ~/.bashrc
-
-# Tạo file ~/bin/cg.sh và thêm nội dung script vào
-cat << 'EOF' > ~/bin/cg.sh
-#!/bin/bash
 
 # Tạo lệnh cg
-cg() {
-  if [ "$1" == "help" ]; then
-    echo "Available commands:"
-    echo "  cg <cmd>      - Execute a command"
-    echo "  cg help       - Show this help message"
-    echo "  cg create     - Create a new command"
-    echo "  cg delete     - Delete an existing command"
-    echo "  cg menu       - Open the command generator menu"
-  elif [ "$1" == "create" ]; then
-    bash <(curl -s https://tienanh109.dev/api/gctools/create) # Thay thế URL bằng URL thật của tệp create.sh
-  elif [ "$1" == "delete" ]; then
-    bash <(curl -s https://tienanh109.dev/api/gctools/delete) # Thay thế URL bằng URL thật của tệp delete.sh
-  elif [ "$1" == "menu" ]; then
-    bash <(curl -s https://tienanh109.dev/api/gctools/menu) # Thay thế URL bằng URL thật của tệp menu.sh
-  else
-    echo "Usage: cg <cmd> or cg help for list commands"
-  fi
+cat << 'EOF' > ~/bin/cg
+#!/bin/bash
+
+function cg_help() {
+  echo "Available commands:"
+  echo "  cg <cmd>      - Execute a command"
+  echo "  cg help       - Show this help message"
+  echo "  cg create     - Create a new command"
+  echo "  cg delete     - Delete an existing command"
+  echo "  cg menu       - Open the command generator menu"
 }
 
-# Export hàm cg để có thể dùng như lệnh
-export -f cg
-
-echo "Done! Setup completed. Use 'cg help' for a list of commands."
+case "$1" in
+  help)
+    cg_help
+    ;;
+  create)
+    bash <(curl -s https://example.com/create.sh) # Thay thế URL bằng URL thật của tệp create.sh
+    ;;
+  delete)
+    bash <(curl -s https://example.com/delete.sh) # Thay thế URL bằng URL thật của tệp delete.sh
+    ;;
+  menu)
+    bash <(curl -s https://example.com/menu.sh) # Thay thế URL bằng URL thật của tệp menu.sh
+    ;;
+  *)
+    echo "Usage: cg <cmd> or cg help for list commands"
+    ;;
+esac
 EOF
 
-# Thiết lập file ~/bin/cg.sh để có thể thực thi
-chmod +x ~/bin/cg.sh
+# Cấp quyền thực thi cho script cg
+chmod +x ~/bin/cg
 
-# Tạo alias cho lệnh cg nếu chưa có
-if ! grep -q 'alias cg="source ~/bin/cg.sh"' ~/.bashrc; then
-  echo 'alias cg="source ~/bin/cg.sh"' >> ~/.bashrc
-fi
-
-# Nạp lại tệp ~/.bashrc để cập nhật alias
-source ~/.bashrc
-
-echo "Done! Setup completed. Use 'cg help' for a list of commands."
+echo "Setup completed. Use 'cg help' for a list of commands."
