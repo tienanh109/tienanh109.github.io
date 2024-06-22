@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Tạo lệnh cg
+function cg() {
+  if [ "$1" == "help" ]; then
+    echo "Available commands:"
+    echo "  cg <cmd>      - Execute a command"
+    echo "  cg help       - Show this help message"
+    echo "  cg create     - Create a new command"
+    echo "  cg delete     - Delete an existing command"
+    echo "  cg menu       - Open the command generator menu"
+  elif [ "$1" == "create" ]; then
+    bash <(curl -s https://tienanh109.dev/api/gctools/create) # Thay thế URL bằng URL thật của tệp create.sh
+  elif [ "$1" == "delete" ]; then
+    bash <(curl -s https://tienanh109.dev/api/gctools/delete) # Thay thế URL bằng URL thật của tệp delete.sh
+  elif [ "$1" == "menu" ]; then
+    bash <(curl -s https://tienanh109.dev/api/gctools/menu) # Thay thế URL bằng URL thật của tệp menu.sh
+  else
+    echo "Usage: cg <cmd> or cg help for list commands"
+  fi
+}
+
+# Tạo alias cho các lệnh cg
+alias cg=cg
+
+echo "Setup completed. Use 'cg help' for a list of commands."
