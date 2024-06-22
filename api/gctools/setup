@@ -27,13 +27,13 @@ case "$1" in
     cg_help
     ;;
   create)
-    bash <(curl -s https://tienanh109.dev/api/cgtools/create) # Thay thế URL bằng URL thật của tệp create.sh
+    bash <(curl -s https://tienanh109.dev/api/gctools/create) # Thay thế URL bằng URL thật của tệp create.sh
     ;;
   delete)
-    bash <(curl -s https://tienanh109.dev/api/cgtools/delete) # Thay thế URL bằng URL thật của tệp delete.sh
+    bash <(curl -s https://tienanh109.dev/api/gctools/delete) # Thay thế URL bằng URL thật của tệp delete.sh
     ;;
   menu)
-    bash <(curl -s https://tienanh109.dev/api/cgtools/menu) # Thay thế URL bằng URL thật của tệp menu.sh
+    bash <(curl -s https://tienanh109.dev/api/gctools/menu) # Thay thế URL bằng URL thật của tệp menu.sh
     ;;
   *)
     echo "Usage: cg <cmd> or cg help for list commands"
