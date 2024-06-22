@@ -10,10 +10,10 @@ if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
 fi
 
 # Tạo lệnh cg
-cat << 'EOF' > ~/bin/cg
+cat << 'EOF' > ~/bin/cg.sh
 #!/bin/bash
 
-function cg_help() {
+cg_help() {
   echo "Available commands:"
   echo "  cg <cmd>      - Execute a command"
   echo "  cg help       - Show this help message"
@@ -42,6 +42,6 @@ esac
 EOF
 
 # Cấp quyền thực thi cho script cg
-chmod +x ~/bin/cg
+chmod +x ~/bin/cg.sh
 
 echo "Setup completed. Use 'cg help' for a list of commands."
