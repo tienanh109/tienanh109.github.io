@@ -3,7 +3,13 @@
 read -p "What is the new command name for Termux? > Name: " cmd_name
 read -p "What will it do? > Shell cmd: " cmd_action
 
-echo "alias $cmd_name='$cmd_action'" >> ~/.bashrc
-source ~/.bashrc
+# Tạo lệnh mới trong ~/bin
+cat << EOF > ~/bin/$cmd_name
+#!/bin/bash
+$cmd_action
+EOF
+
+# Cấp quyền thực thi cho lệnh mới
+chmod +x ~/bin/$cmd_name
 
 echo "Command '$cmd_name' created successfully!"
