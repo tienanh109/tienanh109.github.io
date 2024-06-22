@@ -1,0 +1,1 @@
+PLEASE GO TO REPO Commands Gen for Termux FOR LICENSE 
