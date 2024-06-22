@@ -1,0 +1,42 @@
+#!/bin/bash
+echo "
+ ░▒▓██████▓▒░ ░▒▓██████▓▒░       ░▒▓████████▓▒░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░       ░▒▓███████▓▒░      
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░         ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░             
+░▒▓█▓▒░      ░▒▓█▓▒░                ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░             
+░▒▓█▓▒▒▓███▓▒░▒▓█▓▒░                ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░       ░▒▓██████▓▒░       
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░                ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░             ░▒▓█▓▒░      
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░         ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░             ░▒▓█▓▒░      
+ ░▒▓██████▓▒░ ░▒▓██████▓▒░          ░▒▓█▓▒░   ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓████████▓▒░▒▓███████▓▒░       
+                                                                                                        
+                                                                                                        
+                                                                                                        "
+                                                                                                        
+                                                             
+                                                             
+                                                             
+                                                             
+                                                             
+                                                             
+                                                             
+                                                             
+                                           
+                                           
+
+
+
+
+
+
+echo ""
+echo "Welcome to the Termux custom command generator, developed by tienanh109! Please enter your preferences!"
+echo "1. Create New Commands"
+echo "2. Delete your commands"
+read -p "Options > " option
+
+if [ "$option" == "1" ]; then
+  bash <(curl -s https://tienanh109.dev/api/gctools/create) # Thay thế URL bằng URL thật của tệp create.sh
+elif [ "$option" == "2" ]; then
+  bash <(curl -s https://tienanh109.dev/api/gctools/delete) # Thay thế URL bằng URL thật của tệp delete.sh
+else
+  echo "Invalid option"
+fi
