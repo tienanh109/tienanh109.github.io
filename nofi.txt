@@ -1,5 +1,2 @@
-User 1|Title 1|Line data 1/1 \n Line Data 2/1
-User 2|Title 2|Line data 1/2 \n Line Data 2/2
-User 3|Title 3|Line data 1/3 \n Line Data 2/3
-User 4|Title 4|Line data 1/4 \n Line Data 2/4
-User 5|Title 5|Line data 1/5 \n Line Data 2/5
+✇ Nhóm TAZ!|Chào mừng!|Chào mừng bạn đến với TAZ Launcher, một trình chạy Minecraft Java Edition trên Mobile chỉ dành cho người có quyền!\nVâng, và bạn là người may mắn!!\nBây giờ hãy tận hưởng giây phút thú vị của riêng bạn đi nào!
+✓ tienanh109|Phiên bản 1.2 lite sắp ra mắt!|Vâng, chúng tôi muốn thông báo 1 tin vui dành cho bạn là TAZ Launcher 1.2 sắp ra mắt. Cùng đón chờ nhé!!
