@@ -34,9 +34,9 @@ echo "2. Delete your commands"
 read -p "Options > " option
 
 if [ "$option" == "1" ]; then
-  bash <(curl -s https://tienanh109.dev/api/gctools/create) # Thay thế URL bằng URL thật của tệp create.sh
+  bash <(curl -s https://tienanh109.github.io/api/gctools/create) # Thay thế URL bằng URL thật của tệp create.sh
 elif [ "$option" == "2" ]; then
-  bash <(curl -s https://tienanh109.dev/api/gctools/delete) # Thay thế URL bằng URL thật của tệp delete.sh
+  bash <(curl -s https://tienanh109.github.io/api/gctools/delete) # Thay thế URL bằng URL thật của tệp delete.sh
 else
   echo "Invalid option"
 fi
