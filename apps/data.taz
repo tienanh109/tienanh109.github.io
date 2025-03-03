@@ -1,0 +1,27 @@
+## Made by tienanh109
+
+## Welcome to the configuration file, make sure it is completed in the following format:
+
+## Example format: 
+
+## | Tên app | Mô tả app | Tác giả | url tới website | url ảnh preview (nếu có)
+
+
+## Start your app here
+
+| Tic Tac Toe | Play Tic Tac Toe 1 player with AI! | tienanh109 | ./app/ttt.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+| Snake (Touch Mode) | Just a simple snake game | tienanh109 | https://tienanh109.dev/sc/snake-touch/ | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+| Password Saver | Store your passwords, vietnamese language | tienanh109 | https://tienanh109.dev/sc/PasswordManager/ | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|Simple calculator | *um just a simple calculator web app | tienanh109 | ./app/calc.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|Color customization game | A game that requires high precision | tienanh109 | ./app/colormix.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|Country Guess Game | Just 10 country, u can add more | tienanh109 | ./app/countryguess.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|Math Quiz | It's a simple math puzzle! | tienanh109 | ./app/math.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|Simple notes app | my stupid notes app| tienanh109 | ./app/notes.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|Simple Drawing App | Simple simple x7749 | tienanh109 | ./app/paint.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|QR Generator | Generate QR code from text yay| tienanh109 | ./app/qrgen.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|QR Scan | Scan QR image from image yay| tienanh109 | ./app/qrscan.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|Todo App | Todo app, just a simple web app!| tienanh109 | ./app/todo.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+|HTML Entity Converter| uh ugly web app|tienanh109| ./app/htmlconverter.html |https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+| Bash | Not a web app!| tienanh109 | ./app/bash.html| https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+| Character Counter | Count characters from your text | tienanh109 | ./app/charactercounter.html | https://cdn.discordapp.com/avatars/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
+| Base64 <-> Text Converter | Convert between text and base64 | tienanh109 | ./app/base64.html | https://cdn.discordapp.com/avatarls/835382592198410310/a07021181ff16eb57cec1a7e11b54359.png
