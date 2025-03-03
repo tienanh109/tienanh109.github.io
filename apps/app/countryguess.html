@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Guess Quiz</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; font-family: 'Roboto', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .container { text-align: center; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 90%; max-width: 600px; }
+    .flag { width: 200px; height: 100px; display: block; margin: 20px auto; }
+    .button-group { display: flex; flex-wrap: wrap; justify-content: center; }
+    .button-group button { margin: 5px; }
+    #result { margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Country Guess Quiz</h2>
+  <img id="flag" class="flag" src="" alt="Country Flag">
+  <div class="button-group" id="buttons"></div>
+  <button class="btn btn-success mt-3" id="nextQuiz" onclick="nextQuiz()" style="display: none;">Next Quiz</button>
+  <div id="result" class="mt-3"></div>
+</div>
+
+<script>
+  const flags = [
+    { country: 'Vietnam', url: 'https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg' },
+    { country: 'France', url: 'https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg' },
+    { country: 'Germany', url: 'https://upload.wikimedia.org/wikipedia/en/b/ba/Flag_of_Germany.svg' },
+    { country: 'Japan', url: 'https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg' },
+    { country: 'Canada', url: 'https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Canada.svg' },
+    { country: 'Brazil', url: 'https://upload.wikimedia.org/wikipedia/en/0/05/Flag_of_Brazil.svg' },
+    { country: 'Egypt', url: 'https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg' }
+  ];
+
+  let currentFlag;
+
+  function getRandomFlag() {
+    return flags[Math.floor(Math.random() * flags.length)];
+  }
+
+  function nextQuiz() {
+    currentFlag = getRandomFlag();
+    document.getElementById('flag').src = currentFlag.url;
+    document.getElementById('result').innerText = '';
+    document.getElementById('nextQuiz').style.display = 'none';
+    const buttonsDiv = document.getElementById('buttons');
+    buttonsDiv.innerHTML = '';
+    const correctFlag = currentFlag;
+    const shuffledFlags = [correctFlag, ...flags.filter(flag => flag !== correctFlag).sort(() => 0.5 - Math.random()).slice(0, 3)];
+    shuffledFlags.sort(() => 0.5 - Math.random());
+    shuffledFlags.forEach(flag => {
+      const button = document.createElement('button');
+      button.className = 'btn btn-secondary';
+      button.innerText = flag.country;
+      button.onclick = () => checkGuess(flag.country);
+      buttonsDiv.appendChild(button);
+    });
+  }
+
+  function checkGuess(country) {
+    if (country === currentFlag.country) {
+      document.getElementById('result').innerText = 'Correct!';
+    } else {
+      document.getElementById('result').innerText = `Wrong! It's ${currentFlag.country}.`;
+    }
+    document.getElementById('nextQuiz').style.display = 'block';
+  }
+
+  nextQuiz();
+</script>
+
+</body>
+</html>

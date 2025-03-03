@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Entity Encoder/Decoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<h1>HTML Entity Encoder/Decoder</h1>
+<textarea id="inputText" placeholder="Enter text here..."></textarea>
+<div>
+    <button onclick="encodeText()">Encode to HTML Entities</button>
+    <button onclick="decodeText()">Decode HTML Entities</button>
+</div>
+
+<h2>Result:</h2>
+<div class="result" id="resultText"></div>
+
+<script>
+    function encodeText() {
+        const input = document.getElementById('inputText').value;
+        const encoded = input.replace(/[\u00A0-\u9999<>\&]/g, function(i) {
+            return '&#' + i.charCodeAt(0) + ';';
+        });
+        document.getElementById('resultText').innerText = encoded;
+    }
+
+    function decodeText() {
+        const input = document.getElementById('inputText').value;
+        const decoded = input.replace(/&#(\d+);/g, function(match, dec) {
+            return String.fromCharCode(dec);
+        });
+        document.getElementById('resultText').innerText = decoded;
+    }
+</script>
+
+</body>
+</html>

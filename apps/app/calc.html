@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Calculator</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+    .calculator-container {
+      max-width: 400px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .calculator-display {
+      background: #333;
+      color: #fff;
+      font-size: 2em;
+      text-align: right;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .calculator-keys button {
+      width: 100%;
+      height: 60px;
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container calculator-container">
+  <div class="calculator-display" id="display">0</div>
+  <div class="calculator-keys">
+    <div class="row">
+      <div class="col-3"><button class="btn btn-light" onclick="append('7')">7</button></div>
+      <div class="col-3"><button class="btn btn-light" onclick="append('8')">8</button></div>
+      <div class="col-3"><button class="btn btn-light" onclick="append('9')">9</button></div>
+      <div class="col-3"><button class="btn btn-warning" onclick="append('/')">/</button></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><button class="btn btn-light" onclick="append('4')">4</button></div>
+      <div class="col-3"><button class="btn btn-light" onclick="append('5')">5</button></div>
+      <div class="col-3"><button class="btn btn-light" onclick="append('6')">6</button></div>
+      <div class="col-3"><button class="btn btn-warning" onclick="append('*')">*</button></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><button class="btn btn-light" onclick="append('1')">1</button></div>
+      <div class="col-3"><button class="btn btn-light" onclick="append('2')">2</button></div>
+      <div class="col-3"><button class="btn btn-light" onclick="append('3')">3</button></div>
+      <div class="col-3"><button class="btn btn-warning" onclick="append('-')">-</button></div>
+    </div>
+    <div class="row">
+      <div class="col-3"><button class="btn btn-light" onclick="append('0')">0</button></div>
+      <div class="col-3"><button class="btn btn-light" onclick="append('.')">.</button></div>
+      <div class="col-3"><button class="btn btn-success" onclick="calculate()">=</button></div>
+      <div class="col-3"><button class="btn btn-warning" onclick="append('+')">+</button></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12"><button class="btn btn-danger btn-block" onclick="clearDisplay()">C</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let expression = '';
+
+  function append(value) {
+    expression += value;
+    document.getElementById('display').innerText = expression;
+  }
+
+  function calculate() {
+    try {
+      const result = eval(expression);
+      document.getElementById('display').innerText = result;
+      expression = result.toString();
+    } catch {
+      document.getElementById('display').innerText = 'Error';
+    }
+  }
+
+  function clearDisplay() {
+    expression = '';
+    document.getElementById('display').innerText = '0';
+  }
+</script>
+
+</body>
+</html>

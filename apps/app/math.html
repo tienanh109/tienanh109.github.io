@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Quiz</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; font-family: 'Roboto', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .container { text-align: center; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+    .question { font-size: 1.5rem; margin-bottom: 20px; }
+    #result { margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Math Quiz</h2>
+  <div class="question" id="question"></div>
+  <input type="number" id="answer" class="form-control" placeholder="Your answer">
+  <button class="btn btn-primary mt-3" onclick="checkAnswer()">Submit</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  let num1, num2, operator, correctAnswer;
+
+  function generateQuestion() {
+    num1 = Math.floor(Math.random() * 10) + 1;
+    num2 = Math.floor(Math.random() * 10) + 1;
+    const operators = ['+', '-', '*', '/'];
+    operator = operators[Math.floor(Math.random() * operators.length)];
+
+    switch (operator) {
+      case '+': correctAnswer = num1 + num2; break;
+      case '-': correctAnswer = num1 - num2; break;
+      case '*': correctAnswer = num1 * num2; break;
+      case '/': correctAnswer = (num1 / num2).toFixed(2); break;
+    }
+
+    document.getElementById('question').innerText = `${num1} ${operator} ${num2} = ?`;
+    document.getElementById('answer').value = '';
+    document.getElementById('result').innerText = '';
+  }
+
+  function checkAnswer() {
+    const userAnswer = document.getElementById('answer').value;
+    if (userAnswer == correctAnswer) {
+      document.getElementById('result').innerText = 'Correct!';
+    } else {
+      document.getElementById('result').innerText = `Wrong! Correct answer: ${correctAnswer}`;
+    }
+    setTimeout(generateQuestion, 2000);
+  }
+
+  generateQuestion();
+</script>
+
+</body>
+</html>

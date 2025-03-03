@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful To-Do App</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+    .todo-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .todo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .todo-header h2 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    .todo-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .todo-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .todo-list li:last-child {
+      border-bottom: none;
+    }
+    .btn-complete {
+      background: #28a745;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container todo-container">
+  <div class="todo-header">
+    <h2>Beautiful To-Do List</h2>
+    <button class="btn btn-primary" onclick="addTodo()">Add Task</button>
+  </div>
+  <ul class="todo-list" id="todoList">
+    <!-- Tasks will be dynamically added here -->
+  </ul>
+</div>
+
+<script>
+  let todos = [];
+
+  function addTodo() {
+    const task = prompt('Enter your task:');
+    if (task) {
+      todos.push({ text: task, completed: false });
+      renderTodos();
+    }
+  }
+
+  function toggleComplete(index) {
+    todos[index].completed = !todos[index].completed;
+    renderTodos();
+  }
+
+  function renderTodos() {
+    const todoList = document.getElementById('todoList');
+    todoList.innerHTML = '';
+    todos.forEach((todo, index) => {
+      const li = document.createElement('li');
+      li.className = 'd-flex justify-content-between align-items-center';
+      li.innerHTML = `
+        <span style="text-decoration: ${todo.completed ? 'line-through' : 'none'};">${todo.text}</span>
+        <button class="btn btn-sm ${todo.completed ? 'btn-secondary' : 'btn-complete'}" onclick="toggleComplete(${index})">
+          ${todo.completed ? 'Undo' : 'Complete'}
+        </button>
+      `;
+      todoList.appendChild(li);
+    });
+  }
+
+  renderTodos();
+</script>
+
+</body>
+</html>

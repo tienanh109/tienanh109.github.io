@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Drawing App</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+    .drawing-container {
+      max-width: 100%;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .drawing-canvas {
+      width: 100%;
+      border: 1px solid #e9ecef;
+      border-radius: 5px;
+    }
+    .color-picker {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .color-picker input {
+      width: 40px;
+      height: 40px;
+      border: none;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container drawing-container">
+  <h2 class="text-center">Beautiful Drawing App</h2>
+  <canvas id="drawingCanvas" class="drawing-canvas"></canvas>
+  <div class="color-picker">
+    <input type="color" id="colorPicker" value="#000000">
+  </div>
+  <button class="btn btn-danger btn-block mt-3" onclick="clearCanvas()">Clear</button>
+</div>
+
+<script>
+  const canvas = document.getElementById('drawingCanvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+
+  function resizeCanvas() {
+    if (window.innerHeight > window.innerWidth) {
+      // Portrait mode
+      canvas.width = window.innerWidth * 0.9;
+      canvas.height = window.innerHeight * 0.7;
+    } else {
+      // Landscape mode
+      canvas.width = window.innerWidth * 0.9;
+      canvas.height = window.innerHeight * 0.8;
+    }
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('orientationchange', resizeCanvas);
+  resizeCanvas();
+
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('touchstart', startDrawing);
+  canvas.addEventListener('touchend', stopDrawing);
+  canvas.addEventListener('touchmove', draw);
+
+  function startDrawing(event) {
+    drawing = true;
+    draw(event); // Draw for touchstart or mousedown
+  }
+
+  function stopDrawing() {
+    drawing = false;
+    ctx.beginPath(); // Reset drawing path
+  }
+
+  function draw(event) {
+    if (!drawing) return;
+    
+    event.preventDefault(); // Prevent scrolling while drawing
+
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = document.getElementById('colorPicker').value;
+
+    const rect = canvas.getBoundingClientRect();
+    const x = (event.clientX || event.touches[0].clientX) - rect.left;
+    const y = (event.clientY || event.touches[0].clientY) - rect.top;
+
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+  }
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+</script>
+
+</body>
+</html>

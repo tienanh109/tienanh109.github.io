@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Note App</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+    .note-container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .note-header {
+      text-align: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e9ecef;
+      margin-bottom: 20px;
+    }
+    .note-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .note-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .note-list li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container note-container">
+  <div class="note-header">
+    <h2>Beautiful Note App</h2>
+    <button class="btn btn-primary" onclick="addNote()">Add Note</button>
+  </div>
+  <ul class="note-list" id="noteList">
+    <!-- Notes will be dynamically added here -->
+  </ul>
+</div>
+
+<script>
+  let notes = [];
+
+  function addNote() {
+    const note = prompt('Enter your note:');
+    if (note) {
+      notes.push(note);
+      renderNotes();
+    }
+  }
+
+  function deleteNote(index) {
+    notes.splice(index, 1);
+    renderNotes();
+  }
+
+  function renderNotes() {
+    const noteList = document.getElementById('noteList');
+    noteList.innerHTML = '';
+    notes.forEach((note, index) => {
+      const li = document.createElement('li');
+      li.className = 'd-flex justify-content-between align-items-center';
+      li.innerHTML = `
+        <span>${note}</span>
+        <button class="btn btn-danger btn-sm" onclick="deleteNote(${index})">Delete</button>
+      `;
+      noteList.appendChild(li);
+    });
+  }
+
+  renderNotes();
+</script>
+
+</body>
+</html>
